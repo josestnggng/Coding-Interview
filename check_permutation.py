@@ -3,15 +3,18 @@ def check_permutation(a, b):
     if len(a) != len(b):
         return False
 
-    # sorted a and b, and check if order each element a is same with element of b
-    # asume use merge sort : O(nlogn)
-    c, d = sorted(a), sorted(b)
-    # O(n)
-    for i in range(len(c)):
-        if c[i] != d[i]:
+    # Asume 128 ASCII
+    char_set = [0]*128
+    # count
+    for x in a:
+        char_set[ord(x)] += 1
+    for x in b:
+        char_set[ord(x)] -= 1
+        if char_set[ord(x)] < 0:
             return False
+
     return True
-    # O(n) + O(nlogn) = O(nlogn)
+    # O(n) + O(n) = O(n)
 
 
 print(check_permutation("python", "thopyn"))
