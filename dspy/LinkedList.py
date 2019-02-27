@@ -3,6 +3,13 @@ class Node:
         self.next = None
         self.data = data
 
+    def print_all(self):
+        node = self
+        while node is not None:
+            print(node.data, end=" ")
+            node = node.next
+        print("")
+
 
 class LinkedList:
 
@@ -45,9 +52,4 @@ class LinkedList:
         return self.head
 
     def print_all(self):
-        node = self.head
-        while node is not None:
-            print(node.data, end=" ")
-            node = node.next
-        print("")
-
+        self.head.print_all()
